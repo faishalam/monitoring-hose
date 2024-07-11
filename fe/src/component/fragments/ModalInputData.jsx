@@ -64,7 +64,7 @@ export default function ModalInputData({ openModalInput, setOpenModalInput }) {
                                 <div className="space-y-4">
                                     {[
                                         { label: "Unit", name: "unit", type: "select", options: ["EX2021", "EX2024", "EX2025"] },
-                                        { label: "Component", name: "component", type: "select", options: ["Pump Area", "Main Valve Area", "Swing Area", "Attachment Area", "Travel Area"] },
+                                        { label: "Component", name: "component", type: "select", options: ["Pump Area", "Main Valve Area", "Swing Area", "Attachment Area", "Travel Area", "PPC Area"] },
                                         { label: "PN", name: "pn", type: "text" },
                                         { label: "Tanggal Penggantian", name: "tanggalPenggantian", type: "date" },
                                         { label: "HM Penggantian", name: "hmPenggantian", type: "number" },
