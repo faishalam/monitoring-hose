@@ -141,13 +141,13 @@ export default function YourDataPages() {
         }
     ];
 
-    if (mySelang === null) {
-        return (
-            <div className="flex justify-center items-center">
-                <h1 className="text-3xl font-bold">Loading</h1>
-            </div>
-        )
-    }
+    // if (mySelang === null) {
+    //     return (
+    //         <div className="flex justify-center items-center">
+    //             <h1 className="text-3xl font-bold">Loading</h1>
+    //         </div>
+    //     )
+    // }
 
     return (
         <div className="w-full rounded-xl bg-white p-2 py-2 shadow-xl mt-6">
