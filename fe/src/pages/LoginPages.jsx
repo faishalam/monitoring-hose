@@ -39,13 +39,17 @@ export default function LoginPages() {
 
     return (
         <div className="w-full py-16">
+                <div className="flex justify-between items-center max-w-full w-full px-96 py-10"> 
+                    <img src="https://i.ibb.co.com/vV2PM5s/Logo-KPP-new-png.png" className="md:max-w-md md:max-h-md md:h-32 md:object-cover" alt="" />
+                    <img src="https://i.ibb.co.com/k11yP7B/PLANT-TMRB-6.png" className="md:max-w-md md:max-h-md md:h-32 md:object-cover" alt="" />
+                </div>
             <div className="flex bg-white rounded-lg shadow-lg overflow-hidden mx-auto max-w-sm lg:max-w-4xl">
                 <div
                     className="hidden lg:block lg:w-1/2 bg-cover"
-                    style={{
-                        backgroundImage:
-                            'url("https://images.unsplash.com/photo-1546514714-df0ccc50d7bf?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=667&q=80")'
-                    }}></div>
+                   >
+
+                    <img src="https://i.ibb.co.com/cxk1VxR/PC1250.png" className="w-full h-full p-16 object-containt" alt="" />
+                   </div>
 
                 <div className="w-full p-8 lg:w-1/2">
                     <h2 className="text-2xl font-semibold text-gray-700 text-center">

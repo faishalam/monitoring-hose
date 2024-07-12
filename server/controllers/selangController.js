@@ -21,8 +21,10 @@ class SelangController {
                         ['createdAt', 'DESC']
                     ]
                 });
-                if (response.length === 0) return res.status(404).json({ message: "Data not found" })
-                res.status(200).json(response)
+                if (response.length === 0) {
+                    return res.status(404).json({ message: "Data not found" });
+                }
+                return res.status(200).json(response);
             }
 
             const response = await Selang.findAll({
@@ -40,9 +42,10 @@ class SelangController {
                 ]
             });
 
-            res.status(200).json(response)
+            return res.status(200).json(response);
         } catch (error) {
-            console.log(error)
+            console.log(error);
+            return res.status(500).json({ message: "Internal server error" });
         }
     }
 
@@ -61,7 +64,7 @@ class SelangController {
 
     static async getMyData(req, res) {
         try {
-            const { search } = req.query
+            const { search } = req.query;
 
             if (search === undefined) {
                 const response = await Selang.findAll({
@@ -72,8 +75,10 @@ class SelangController {
                         ['createdAt', 'DESC']
                     ]
                 });
-                if (response.length === 0) return res.status(404).json({ message: "Data not found" })
-                res.status(200).json(response)
+                if (response.length === 0) {
+                    return res.status(404).json({ message: "Data not found" });
+                }
+                return res.status(200).json(response);
             }
 
             const response = await Selang.findAll({
@@ -91,9 +96,10 @@ class SelangController {
                 ]
             });
 
-            res.status(200).json(response)
+            return res.status(200).json(response);
         } catch (error) {
-            console.log(error)
+            console.log(error);
+            return res.status(500).json({ message: "Internal server error" });
         }
     }
 
@@ -183,17 +189,18 @@ class SelangController {
 
     static async getAllHistory(req, res) {
         try {
-            const { search } = req.query
+            const { search } = req.query;
 
             if (search === undefined) {
                 const response = await History.findAll({
-
                     order: [
                         ['createdAt', 'DESC']
                     ]
                 });
-                if (response.length === 0) return res.status(404).json({ message: "Data not found" })
-                res.status(200).json(response)
+                if (response.length === 0) {
+                    return res.status(404).json({ message: "Data not found" });
+                }
+                return res.status(200).json(response);
             }
 
             const response = await History.findAll({
@@ -210,9 +217,10 @@ class SelangController {
                 ]
             });
 
-            res.status(200).json(response)
+            return res.status(200).json(response);
         } catch (error) {
-            console.log(error)
+            console.log(error);
+            return res.status(500).json({ message: "Internal server error" });
         }
     }
 

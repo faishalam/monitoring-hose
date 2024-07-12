@@ -149,7 +149,7 @@ export default function HistoryPage() {
             </div>
             <DataTable
                 columns={columns}
-                data={selang}
+                data={selang ?? []}
                 progressPending={history.isLoading}
                 pagination
                 paginationPerPage={12}

@@ -1,5 +1,5 @@
 import { Dialog, DialogBackdrop, DialogPanel } from "@headlessui/react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useMutation } from "react-query";
 import { useDispatch } from "react-redux";
@@ -17,7 +17,7 @@ export default function ModalInputData({ openModalInput, setOpenModalInput }) {
             unit: "",
             component: "",
             pn: "",
-            // tanggalPenggantian: "",
+            tanggalPenggantian: "",
             hmPenggantian: 0,
             quantity: 0,
             lifetime: 0,
@@ -43,6 +43,7 @@ export default function ModalInputData({ openModalInput, setOpenModalInput }) {
                 });
                 reset();
                 navigate("/");
+                setOpenModalInput(false)
             },
             onError: (err) => setErr(err?.message)
         }
@@ -51,6 +52,13 @@ export default function ModalInputData({ openModalInput, setOpenModalInput }) {
     const onSubmit = (data) => {
         mutate(data);
     };
+
+    useEffect(() => {
+        if (!openModalInput) {
+            reset();
+        }
+    }, [openModalInput, reset]);
+
 
     return (
         <Dialog open={openModalInput} onClose={setOpenModalInput} className="relative z-10">
@@ -102,7 +110,7 @@ export default function ModalInputData({ openModalInput, setOpenModalInput }) {
                                 </div>
                                 <div className="flex justify-center">
                                     <button type="submit" className="w-2/4 h-10 bg-green-800 text-white rounded-lg hover:bg-green-700" disabled={isLoading}>
-                                        Add Data
+                                        {isLoading ? "Loading..." : "Add Data"}
                                     </button>
                                 </div>
                                 {err && <p className="text-red-500 text-xs mt-2 text-center">{err}</p>}

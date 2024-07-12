@@ -131,7 +131,7 @@ export default function ModalEditData({ openModalEdit, setOpenModalEdit }) {
                                 </div>
                                 <div className="flex justify-center">
                                     <button type="submit" className="w-2/4 h-10 bg-green-800 text-white rounded-lg hover:bg-green-700" disabled={isLoading}>
-                                        Update Data
+                                        {isLoading ? "Loading..." : "Update Data"}
                                     </button>
                                 </div>
                                 {err && <p className="text-red-500 text-xs mt-2 text-center">{err}</p>}

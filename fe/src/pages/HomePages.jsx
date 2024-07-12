@@ -9,8 +9,7 @@ import { getMySelang } from "../features/user/asyncAction";
 import Search from "../component/elements/Search";
 
 const HomePages = () => {
-    const { isLoading, selang = [] } = useSelector((state) => state.selangStore)
-    const history = useSelector((state) => state.historyStore);
+    const { isLoading, selang = [] } = useSelector((state) => state.selangStore) || [];
     const { selangById } = useSelector((state) => state.selangStore);
     const dispatch = useDispatch();
     const role = localStorage.getItem("role")
@@ -26,7 +25,6 @@ const HomePages = () => {
 
         }
     };
-
 
     const onHandleDelete = async (id) => {
         try {
@@ -65,17 +63,6 @@ const HomePages = () => {
             console.error("Failed to fetch selang data:", error);
         }
     };
-
-    useEffect(() => {
-        const fetchSelangData = async () => {
-            try {
-                await dispatch(getSelangData())
-            } catch (error) {
-                console.error("Failed to fetch selang data:", error);
-            }
-        };
-        fetchSelangData();
-    }, [dispatch, role]);
 
     const columns = [
         {
@@ -147,6 +134,21 @@ const HomePages = () => {
 
     ];
 
+    useEffect(() => {
+        const fetchSelangData = async () => {
+            try {
+                await dispatch(getSelangData())
+            } catch (error) {
+                console.error("Failed to fetch selang data:", error);
+            }
+        };
+        fetchSelangData();
+    }, [dispatch, role]);
+
+
+
+
+
 
     return (
         <>
@@ -161,8 +163,8 @@ const HomePages = () => {
                 </div>
                 <DataTable
                     columns={columns}
-                    data={selang} // Ensure selang is not null
-                    // progressPending={isLoading}
+                    data={Array.isArray(selang) && selang || []}
+                    progressPending={isLoading}
                     pagination
                     paginationPerPage={12}
                 />

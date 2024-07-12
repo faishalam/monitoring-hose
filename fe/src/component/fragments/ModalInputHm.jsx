@@ -85,13 +85,13 @@ export default function ModalInputHm(props) {
                                                         {...register(name, { required: `${label} is required`, valueAsNumber: type === "number", validate: type === "number" ? value => value > 0 || `${label} must be greater than 0` : undefined })}
                                                     />
                                                 )}
-                                                
+
                                             </div>
                                         ))}
                                     </div>
                                     <div className="flex justify-center">
                                         <button type="submit" className="w-2/4 h-10 bg-green-800 text-white rounded-lg hover:bg-green-700">
-                                            Submit
+                                            {isLoading ? "Loading..." : "submit"}
                                         </button>
                                     </div>
                                 </form>

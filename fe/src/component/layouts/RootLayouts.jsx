@@ -14,7 +14,7 @@ export default function RootLayouts() {
             <div className="min-h-screen flex bg-[#1a1a1a]">
                 <div className="w-full max-w-full bg-black top-0 absolute inset-0 h-14 z-10 flex justify-between items-center md:px-10 px-2 shadow-2xl">
                     <div>
-                    <img src="https://uccareer.id/assets/upload/company/thumbs/thumb300px-20220214-090222-0fdfc.png" className="md:max-w-sm md:max-h-sm md:h-10 md:object-cover hidden md:block" alt="" />
+                    <img src="https://i.ibb.co.com/vV2PM5s/Logo-KPP-new-png.png" className="md:max-w-sm md:max-h-sm md:h-10 md:object-cover hidden md:block" alt="" />
 
                         <IoMenu size={23} color="white" className="md:hidden" onClick={() => setOpenSidebar(!openSidebar)} />
                     </div>

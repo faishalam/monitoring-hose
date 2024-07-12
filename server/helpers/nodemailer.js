@@ -27,7 +27,7 @@ async function sendEmail(emails, selang) {
     const sendMail = transporter.sendMail({
         from: "noreply",
         to: recipients,
-        subject: "testing ya",
+        subject: "REMINDER HOSE",
         text: text
     })
     console.log("email berhasil dikirim")

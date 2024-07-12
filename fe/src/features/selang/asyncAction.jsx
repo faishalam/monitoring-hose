@@ -62,7 +62,7 @@ export const getSelangData = (query) => {
 
 export const postSelangData = (data) => {
     return async (dispatch) => {
-        dispatch(setLoading(true));
+        // dispatch(setLoading(true));
         try {
             const response = await heroService.post("/create", data, {
                 headers: {
@@ -71,12 +71,12 @@ export const postSelangData = (data) => {
             });
             if (response.data) {
                 dispatch(setSelang(response.data));
-                dispatch(getMySelang())
                 dispatch(getSelangData())
+                dispatch(getMySelang())
             }
-            dispatch(setLoading(false));
+            // dispatch(setLoading(false));
         } catch (error) {
-            dispatch(setLoading(false));
+            // dispatch(setLoading(false));
             dispatch(setError(error.response?.data?.message || 'Failed to fetch data'));
             throw new Error(error.response?.data?.message || 'Failed to fetch data');
         }
