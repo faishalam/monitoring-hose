@@ -81,7 +81,7 @@ export default function ModalEditData({ openModalEdit, setOpenModalEdit }) {
         }
     }, [selangById, reset]);
 
-    console.log(selangById)
+    
     return (
         <Dialog open={openModalEdit.show} onClose={() => setOpenModalEdit({ show: false, id: "" })} className="relative z-10">
             <DialogBackdrop className="fixed inset-0 bg-black bg-opacity-50 transition-opacity" />

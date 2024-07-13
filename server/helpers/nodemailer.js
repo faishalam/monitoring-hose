@@ -9,7 +9,6 @@ async function sendEmail(emails, selang) {
         }
     })
 
-    console.log(emails)
     const text = `
         REMINDER PENGANTIAN
         Unit: ${selang.unit}

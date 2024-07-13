@@ -37,7 +37,6 @@ export default function LoginPages() {
         mutate(data);
     };
 
-    console.log('masuk')
 
     return (
         <div className="w-full py-16">

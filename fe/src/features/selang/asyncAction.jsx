@@ -165,7 +165,6 @@ export const updateSelangHmData = (data) => {
                     Authorization: `Bearer ${localStorage.getItem("access_token")}`
                 }
             });
-            console.log(response)
             dispatch(setLoading(false));
         } catch (error) {
             console.log(error)

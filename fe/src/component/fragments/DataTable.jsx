@@ -42,9 +42,6 @@ const DataTableComponent = ({ selang, onHandleDelete, onHandleEdit, isLoading })
         onEdit: onHandleEdit
     })) : [];
 
-
-    // console.log(data)
-
     return (
         <>
             <DataTable
