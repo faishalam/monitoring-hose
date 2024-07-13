@@ -37,6 +37,8 @@ export default function LoginPages() {
         mutate(data);
     };
 
+    console.log('masuk')
+
     return (
         <div className="w-full py-16">
                 <div className="flex justify-between items-center max-w-full w-full px-96 py-10"> 

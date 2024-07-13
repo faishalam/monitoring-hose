@@ -15,6 +15,7 @@ export const userLoginAction = (form) => {
                 dispatch(getSelangData())
             }
         } catch (error) {
+            // console.log(error)
             console.error(error.message);
             throw new Error(error.response?.data?.message || 'Login failed');
         }

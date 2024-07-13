@@ -146,10 +146,6 @@ const HomePages = () => {
     }, [dispatch, role]);
 
 
-
-
-
-
     return (
         <>
             <div className="w-full rounded-xl bg-white p-2 py-2 shadow-xl mt-6">
