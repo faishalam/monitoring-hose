@@ -246,7 +246,7 @@ class SelangController {
                 await selang.update({ lifetime : totalLifetime });
                 // jika berhasil update maka : 
                 if (selang.target - selang.lifetime <= 250 || selang.target - selang.lifetime <= 500) {
-                    // sendEmail(emails, selang);
+                    sendEmail(emails, selang);
                 }
             }
 
