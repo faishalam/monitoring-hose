@@ -240,10 +240,13 @@ class SelangController {
             }
 
             for (const selang of response) {
-                await selang.update({ lifetime });
+                if(lifetime < selang.hmPenggantian) return res.status(400).json({ message: "Lifetime cannot be less than HM Penggantian" });
+                const totalLifetime = lifetime - selang.hmPenggantian
+
+                await selang.update({ lifetime : totalLifetime });
                 // jika berhasil update maka : 
                 if (selang.target - selang.lifetime <= 250 || selang.target - selang.lifetime <= 500) {
-                    sendEmail(emails, selang);
+                    // sendEmail(emails, selang);
                 }
             }
 

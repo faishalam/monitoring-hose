@@ -16,17 +16,17 @@ export default function ModalEditData({ openModalEdit, setOpenModalEdit }) {
 
     // Initialize useForm with defaultValues from selangById
     const { register, handleSubmit, formState: { errors }, reset } = useForm({
-        defaultValues: {
-            unit: selangById?.unit,
-            component: selangById?.component,
-            pn: selangById?.pn,
-            // tanggalPenggantian: new Date(selangById?.tanggalPenggantian).toISOString().split('T')[0],
-            hmPenggantian: selangById?.hmPenggantian,
-            quantity: selangById?.quantity,
-            lifetime: selangById?.lifetime,
-            target: selangById?.target,
-            remark: selangById?.remark
-        }
+        // defaultValues: {
+        //     unit: selangById?.unit,
+        //     component: selangById?.component,
+        //     pn: selangById?.pn,
+        //     tanggalPenggantian: new Date(selangById?.tanggalPenggantian).toISOString().split('T')[0],
+        //     hmPenggantian: selangById?.hmPenggantian,
+        //     quantity: selangById?.quantity,
+        //     lifetime: selangById?.lifetime,
+        //     target: selangById?.target,
+        //     remark: selangById?.remark
+        // }
     });
 
 
@@ -80,7 +80,6 @@ export default function ModalEditData({ openModalEdit, setOpenModalEdit }) {
             reset(formattedData);
         }
     }, [selangById, reset]);
-
     
     return (
         <Dialog open={openModalEdit.show} onClose={() => setOpenModalEdit({ show: false, id: "" })} className="relative z-10">
@@ -99,7 +98,7 @@ export default function ModalEditData({ openModalEdit, setOpenModalEdit }) {
                                         { label: "Tanggal Penggantian", name: "tanggalPenggantian", type: "date" },
                                         { label: "HM Penggantian", name: "hmPenggantian", type: "number" },
                                         { label: "Quantity", name: "quantity", type: "number" },
-                                        { label: "Lifetime", name: "lifetime", type: "number" },
+                                        // { label: "Lifetime", name: "lifetime", type: "number" },
                                         { label: "Target", name: "target", type: "number" },
                                         { label: "Remark", name: "remark", type: "select", options: ["Genuine", "IMA"] }
                                     ].map(({ label, name, type, options }) => (

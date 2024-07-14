@@ -6,10 +6,11 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import Swal from "sweetalert2"
 import { getMySelang } from "../../features/user/asyncAction";
+import { useState } from "react";
 
 export default function ModalInputHm(props) {
     const { openModalInputHm, setOpenModalInputHm } = props
-
+    const [err, setError] = useState(null)
     const { register, handleSubmit, formState: { errors }, reset } = useForm({
         defaultValues: {
             lifetime: 0,
@@ -38,7 +39,7 @@ export default function ModalInputHm(props) {
                 navigate("/");
                 setOpenModalInputHm(false)
             },
-            onError: (err) => setErr(err?.message)
+            onError: (err) => setError(err)
         }
     );
 
@@ -47,6 +48,7 @@ export default function ModalInputHm(props) {
     };
 
 
+    
     return (
         <>
             <Dialog open={openModalInputHm} onClose={setOpenModalInputHm} className="relative z-10">
@@ -58,6 +60,7 @@ export default function ModalInputHm(props) {
                                 <form onSubmit={handleSubmit(onSubmit)} className="bg-white mb-4">
                                     <h1 className="text-gray-800 font-bold text-xl mb-8 border-b-2 border-black">Input HM!</h1>
                                     <div className="space-y-4">
+                                        {err && <p className="text-red-500 text-xs">{err}</p>}
                                         {[
                                             { label: "Input Hm", name: "lifetime", type: "number" },
                                             { label: "Unit", name: "unit", type: "select", options: ["EX2021", "EX2024", "EX2025"] },

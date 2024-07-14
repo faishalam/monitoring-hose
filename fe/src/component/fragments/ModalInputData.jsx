@@ -2,7 +2,7 @@ import { Dialog, DialogBackdrop, DialogPanel } from "@headlessui/react";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useMutation } from "react-query";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { getSelangData, postSelangData } from "../../features/selang/asyncAction";
 import Swal from 'sweetalert2'
@@ -77,7 +77,7 @@ export default function ModalInputData({ openModalInput, setOpenModalInput }) {
                                         { label: "Tanggal Penggantian", name: "tanggalPenggantian", type: "date" },
                                         { label: "HM Penggantian", name: "hmPenggantian", type: "number" },
                                         { label: "Quantity", name: "quantity", type: "number" },
-                                        { label: "Lifetime", name: "lifetime", type: "number" },
+                                        // { label: "Lifetime", name: "lifetime", type: "number" },
                                         { label: "Target", name: "target", type: "number" },
                                         // { label: "Email Reminder", name: "email", type: "email" },
                                         { label: "Remark", name: "remark", type: "select", options: ["Genuine", "IMA"] }

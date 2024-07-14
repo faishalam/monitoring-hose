@@ -167,10 +167,10 @@ export const updateSelangHmData = (data) => {
             });
             dispatch(setLoading(false));
         } catch (error) {
-            console.log(error)
             dispatch(setLoading(false));
             dispatch(setError(error.response?.data?.message || 'Failed to fetch data'));
-            throw new Error(error.response?.data?.message || 'Failed to fetch data');
+            // throw new Error(error.response?.data?.message || 'Failed to fetch data');
+            throw error.response.data.message
         }
     };
 }
