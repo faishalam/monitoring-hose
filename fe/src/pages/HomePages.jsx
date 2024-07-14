@@ -7,6 +7,10 @@ import ModalEditData from "../component/fragments/ModalEditData";
 import Swal from "sweetalert2";
 import { getMySelang } from "../features/user/asyncAction";
 import Search from "../component/elements/Search";
+import * as XLSX from 'xlsx';
+import { saveAs } from 'file-saver';
+
+
 
 const HomePages = () => {
     const { isLoading, selang = [] } = useSelector((state) => state.selangStore) || [];
@@ -134,6 +138,31 @@ const HomePages = () => {
 
     ];
 
+    const dataOnExcel = Array.isArray(selang) && selang.map((item) => {
+        return {
+            unit: item.unit,
+            component: item.component,
+            pn: item.pn,
+            tanggalPenggantian: item.tanggalPenggantian,
+            hmPenggantian: item.hmPenggantian,
+            quantity: item.quantity,
+            lifetime: item.lifetime,
+            target: item.target,
+            remark: item.remark,
+            createdAt: item.createdAt,
+            updateAt: item.updateAt
+        }
+    })
+
+    const downloadExcel = () => {
+        const worksheet = XLSX.utils.json_to_sheet(dataOnExcel);
+        const workbook = XLSX.utils.book_new();
+        XLSX.utils.book_append_sheet(workbook, worksheet, "Hose Dashboard");
+        const excelBuffer = XLSX.write(workbook, { bookType: "xlsx", type: "array" });
+        const data = new Blob([excelBuffer], { type: "application/octet-stream" });
+        saveAs(data, "hoseDashboard.xlsx");
+    };
+
     useEffect(() => {
         const fetchSelangData = async () => {
             try {
@@ -145,17 +174,23 @@ const HomePages = () => {
         fetchSelangData();
     }, [dispatch, role]);
 
-
     return (
         <>
             <div className="w-full rounded-xl bg-white p-2 py-2 shadow-xl mt-6">
                 <div className="w-full max-w-full">
-                    <div className="text-2xl font-bold p-4">Dashboard</div>
-                    <Search
-                        onHandleSearch={onHandleSearch}
-                        setSearch={setSearch}
-                        search={search}
-                    />
+                    <div className="text-2xl font-bold p-2">Dashboard</div>
+                    <div className="flex justify-between px-2 py-2">
+                        <button
+                            className="border text-sm p-2 text-black rounded-md hover:bg-[#f5f5f5] hover:text-black"
+                            onClick={() => downloadExcel()}>
+                            <span>Download</span>
+                        </button>
+                        <Search
+                            onHandleSearch={onHandleSearch}
+                            setSearch={setSearch}
+                            search={search}
+                        />
+                    </div>
                 </div>
                 <DataTable
                     columns={columns}

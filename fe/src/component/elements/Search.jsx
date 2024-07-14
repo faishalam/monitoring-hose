@@ -1,7 +1,7 @@
 export default function Search(props) {
     const { onHandleSearch, setSearch, search } = props
     return (
-        <form onSubmit={onHandleSearch} className="max-w-full mx-auto ml-3 justify-end items-end flex md:px-4 px-2">
+        <form onSubmit={onHandleSearch} className="max-w-full flex">
             <label
                 htmlFor="default-search"
                 className="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white"
