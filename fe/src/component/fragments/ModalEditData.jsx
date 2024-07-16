@@ -80,7 +80,7 @@ export default function ModalEditData({ openModalEdit, setOpenModalEdit }) {
             reset(formattedData);
         }
     }, [selangById, reset]);
-    
+
     return (
         <Dialog open={openModalEdit.show} onClose={() => setOpenModalEdit({ show: false, id: "" })} className="relative z-10">
             <DialogBackdrop className="fixed inset-0 bg-black bg-opacity-50 transition-opacity" />
@@ -98,9 +98,10 @@ export default function ModalEditData({ openModalEdit, setOpenModalEdit }) {
                                         { label: "Tanggal Penggantian", name: "tanggalPenggantian", type: "date" },
                                         { label: "HM Penggantian", name: "hmPenggantian", type: "number" },
                                         { label: "Quantity", name: "quantity", type: "number" },
-                                        // { label: "Lifetime", name: "lifetime", type: "number" },
                                         { label: "Target", name: "target", type: "number" },
-                                        { label: "Remark", name: "remark", type: "select", options: ["Genuine", "IMA"] }
+                                        { label: "Remark", name: "remark", type: "select", options: ["Genuine", "IMA"] },
+                                        { label: "PIC", name: "pic", type: "text" },
+                                        { label: "Notes", name: "notes", type: "text" }
                                     ].map(({ label, name, type, options }) => (
                                         <div key={name} className="flex flex-col">
                                             <label htmlFor={name} className="text-sm font-semibold">{label}</label>

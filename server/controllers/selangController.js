@@ -14,9 +14,6 @@ class SelangController {
 
             if (search === undefined) {
                 const response = await Selang.findAll({
-                    where: {
-                        status: true
-                    },
                     order: [
                         ['createdAt', 'DESC']
                     ]
@@ -29,12 +26,12 @@ class SelangController {
 
             const response = await Selang.findAll({
                 where: {
-                    status: true,
                     [Op.or]: [
                         { unit: { [Op.iLike]: `%${search}%` } },
                         { component: { [Op.iLike]: `%${search}%` } },
                         { pn: { [Op.iLike]: `%${search}%` } },
-                        { remark: { [Op.iLike]: `%${search}%` } }
+                        { remark: { [Op.iLike]: `%${search}%` } },
+                        { pic : {[Op.iLike]: `%${search}%` } }
                     ]
                 },
                 order: [
@@ -88,7 +85,8 @@ class SelangController {
                         { unit: { [Op.iLike]: `%${search}%` } },
                         { component: { [Op.iLike]: `%${search}%` } },
                         { pn: { [Op.iLike]: `%${search}%` } },
-                        { remark: { [Op.iLike]: `%${search}%` } }
+                        { remark: { [Op.iLike]: `%${search}%` } },
+                        { pic : {[Op.iLike]: `%${search}%` } }
                     ]
                 },
                 order: [
@@ -105,9 +103,9 @@ class SelangController {
 
     static async createData(req, res) {
         try {
-            const { unit, component, pn, hmPenggantian, tanggalPenggantian, quantity, lifetime, target, remark } = req.body
+            const { unit, component, pn, hmPenggantian, tanggalPenggantian, quantity, lifetime, target, remark, pic, notes } = req.body
 
-            let response = await Selang.create({ unit, component, pn, hmPenggantian, tanggalPenggantian, quantity, lifetime, target, remark, userId: req.user.id })
+            let response = await Selang.create({ unit, component, pn, hmPenggantian, tanggalPenggantian, quantity, lifetime, target, remark, userId: req.user.id, pic, notes })
 
             res.status(201).json(response)
         } catch (error) {
@@ -148,11 +146,11 @@ class SelangController {
         try {
             const { id } = req.params
             if (!id) return res.status(400).json({ message: "Asset ID is required" })
-            const { unit, component, pn, tanggalPenggantian, hmPenggantian, quantity, lifetime, target, remark } = req.body
+            const { unit, component, pn, tanggalPenggantian, hmPenggantian, quantity, lifetime, target, remark, pic, notes } = req.body
             const response = await Selang.findOne({ where: { id } })
 
             if (req.user.role === 'admin') {
-                await response.update({ unit, component, pn, tanggalPenggantian, hmPenggantian, quantity, lifetime, target, remark, userId: req.user.id }, { where: { id } })
+                await response.update({ unit, component, pn, tanggalPenggantian, hmPenggantian, quantity, lifetime, target, remark, pic, notes, userId: req.user.id }, { where: { id } })
                 res.status(200).json({ message: "Data updated successfully" })
                 return
             }
@@ -175,13 +173,13 @@ class SelangController {
 
     static async updateStatus(req, res) {
         try {
-            const { id } = req.params
+            // const { id } = req.params
 
 
-            const response = await Selang.findOne({ where: { id } })
-            await response.update({ status: false }, { where: { id } })
+            // const response = await Selang.findOne({ where: { id } })
+            // await response.update({ status: false }, { where: { id } })
 
-            res.status(200).json({ message: "Asset status updated successfully" })
+            // res.status(200).json({ message: "Asset status updated successfully" })
         } catch (error) {
             console.log(error)
         }
@@ -209,7 +207,8 @@ class SelangController {
                         { unit: { [Op.iLike]: `%${search}%` } },
                         { component: { [Op.iLike]: `%${search}%` } },
                         { pn: { [Op.iLike]: `%${search}%` } },
-                        { remark: { [Op.iLike]: `%${search}%` } }
+                        { remark: { [Op.iLike]: `%${search}%` } },
+                        { pic : {[Op.iLike]: `%${search}%` } }
                     ]
                 },
                 order: [
@@ -240,7 +239,7 @@ class SelangController {
             }
 
             for (const selang of response) {
-                if(lifetime < selang.hmPenggantian) return res.status(400).json({ message: "Lifetime cannot be less than HM Penggantian" });
+                if (lifetime < selang.hmPenggantian) return res.status(400).json({ message: "Lifetime cannot be less than HM Penggantian" });
                 const sumLifetime = lifetime - selang.hmPenggantian
                 const totalLifetime = selang.lifetime + sumLifetime
 
@@ -261,9 +260,9 @@ class SelangController {
 
     static async createHistory(req, res) {
         try {
-            const { unit, component, pn, hmPenggantian, quantity, lifetime, target, remark } = req.body
+            const { unit, component, pn, hmPenggantian, quantity, lifetime, target, remark, pic, notes } = req.body
 
-            let response = await History.create({ unit, component, pn, hmPenggantian, tanggalPenggantian: nowWIB, quantity, lifetime, target, remark, userId: req.user.id })
+            let response = await History.create({ unit, component, pn, hmPenggantian, tanggalPenggantian: nowWIB, quantity, lifetime, target, remark, userId: req.user.id, pic, notes })
 
             res.status(201).json(response)
         } catch (error) {

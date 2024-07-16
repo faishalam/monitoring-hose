@@ -115,6 +115,16 @@ export default function HistoryPage() {
             sortable: true,
         },
         {
+            name: "PIC",
+            selector: row => row.pic,
+            sortable: true,
+        },
+        {
+            name: "Notes",
+            selector: row => row.notes,
+            sortable: true,
+        },
+        {
             name: 'Action',
             cell: row => (
                 <div className="flex flex-col">

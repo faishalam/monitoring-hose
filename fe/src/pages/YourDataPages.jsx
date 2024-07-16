@@ -121,6 +121,16 @@ export default function YourDataPages() {
             sortable: true,
         },
         {
+            name: "PIC",
+            selector: row => row.pic,
+            sortable: true,
+        },
+        {
+            name: "Notes",
+            selector: row => row.notes,
+            sortable: true,
+        },
+        {
             name: 'Action',
             cell: row => (
                 <div className="flex flex-col">
@@ -153,11 +163,13 @@ export default function YourDataPages() {
         <div className="w-full rounded-xl bg-white p-2 py-2 shadow-xl mt-6">
             <div className="w-full max-w-full">
                 <div className="text-2xl font-bold p-4">Your Data</div>
-                <Search
-                    onHandleSearch={onHandleSearch}
-                    setSearch={setSearch}
-                    search={search}
-                />
+                <div className="flex items-center justify-end px-2">
+                    <Search
+                        onHandleSearch={onHandleSearch}
+                        setSearch={setSearch}
+                        search={search}
+                    />
+                </div>
             </div>
             <DataTable
                 columns={columns}
@@ -168,6 +180,6 @@ export default function YourDataPages() {
             />
             <ModalEditData openModalEdit={openModalEdit} setOpenModalEdit={setOpenModalEdit} selangById={selangById} />
         </div>
-      
+
     );
 }

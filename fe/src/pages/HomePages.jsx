@@ -68,7 +68,7 @@ const HomePages = () => {
         }
     };
 
-    const columns = [
+    const columnsAdmin = [
         {
             name: 'Unit',
             selector: row => row.unit,
@@ -114,28 +114,94 @@ const HomePages = () => {
             selector: row => row.remark,
             sortable: true,
         },
-        role === 'admin' && (
-            {
-                name: 'Action',
-                cell: row => (
-                    <div className="flex flex-col">
-                        <button
-                            className="font-medium text-blue-600  dark:text-blue-500 hover:underline"
-                            onClick={() => onHandleEdit(row.id)}
-                        >
-                            Edit
-                        </button>
-                        <button
-                            className="font-medium text-red-600 dark:text-red-500 hover:underline"
-                            onClick={() => onHandleDelete(row.id)}
-                        >
-                            Delete
-                        </button>
-                    </div>
-                ),
-            }
-        )
+        {
+            name: "PIC",
+            selector: row => row.pic,
+            sortable: true,
+        },
+        {
+            name: "Notes",
+            selector: row => row.notes,
+            sortable: true,
+        },
+        {
+            name: 'Action',
+            cell: row => (
+                <div className="flex flex-col">
+                    <button
+                        className="font-medium text-blue-600  dark:text-blue-500 hover:underline"
+                        onClick={() => onHandleEdit(row.id)}
+                    >
+                        Edit
+                    </button>
+                    <button
+                        className="font-medium text-red-600 dark:text-red-500 hover:underline"
+                        onClick={() => onHandleDelete(row.id)}
+                    >
+                        Delete
+                    </button>
+                </div>
+            ),
+        }
 
+    ];
+
+    const columnsGuest = [
+        {
+            name: 'Unit',
+            selector: row => row.unit,
+            sortable: true,
+        },
+        {
+            name: 'Component',
+            selector: row => row.component,
+            sortable: true,
+        },
+        {
+            name: 'PN',
+            selector: row => row.pn,
+            sortable: true,
+        },
+        {
+            name: 'Tanggal Penggantian',
+            selector: row => new Date(row.tanggalPenggantian).toLocaleDateString(),
+            sortable: true,
+        },
+        {
+            name: 'HM Penggantian',
+            selector: row => row.hmPenggantian,
+            sortable: true,
+        },
+        {
+            name: 'Quantity',
+            selector: row => row.quantity,
+            sortable: true,
+        },
+        {
+            name: 'Lifetime',
+            selector: row => row.lifetime,
+            sortable: true,
+        },
+        {
+            name: 'Target',
+            selector: row => row.target,
+            sortable: true,
+        },
+        {
+            name: 'Remark',
+            selector: row => row.remark,
+            sortable: true,
+        },
+        {
+            name: "PIC",
+            selector: row => row.pic,
+            sortable: true,
+        },
+        {
+            name: "Notes",
+            selector: row => row.notes,
+            sortable: true,
+        }
     ];
 
     const dataOnExcel = Array.isArray(selang) && selang.map((item) => {
@@ -193,7 +259,7 @@ const HomePages = () => {
                     </div>
                 </div>
                 <DataTable
-                    columns={columns}
+                    columns={role === "admin" ? columnsAdmin : columnsGuest}
                     data={Array.isArray(selang) && selang || []}
                     progressPending={isLoading}
                     pagination

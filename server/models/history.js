@@ -15,125 +15,146 @@ module.exports = (sequelize, DataTypes) => {
   }
   History.init({
     unit: {
-      type : DataTypes.STRING,
+      type: DataTypes.STRING,
       allowNull: false,
-      validate : {
-        notNull : {
-          msg : "Unit is required"
+      validate: {
+        notNull: {
+          msg: "Unit is required"
         },
-        notEmpty : {
-          msg : "Unit is required"
+        notEmpty: {
+          msg: "Unit is required"
         }
       }
     },
     component: {
-      type : DataTypes.STRING,
+      type: DataTypes.STRING,
       allowNull: false,
-      validate : {
-        notNull : {
-          msg : "Component is required"
+      validate: {
+        notNull: {
+          msg: "Component is required"
         },
-        notEmpty : {
-          msg : "Component is required"
+        notEmpty: {
+          msg: "Component is required"
         }
       }
     },
     pn: {
-      type : DataTypes.STRING,
+      type: DataTypes.STRING,
       allowNull: false,
-      validate : {
-        notNull : {
-          msg : "PN is required"
+      validate: {
+        notNull: {
+          msg: "PN is required"
         },
-        notEmpty : {
-          msg : "PN is required"
+        notEmpty: {
+          msg: "PN is required"
         }
       }
     },
     hmPenggantian: {
-      type : DataTypes.INTEGER,
+      type: DataTypes.INTEGER,
       allowNull: false,
-      validate : {
-        notNull : {
-          msg : "HM Penggantian is required"
+      validate: {
+        notNull: {
+          msg: "HM Penggantian is required"
         },
-        notEmpty : {
-          msg : "HM Penggantian is required"
+        notEmpty: {
+          msg: "HM Penggantian is required"
         }
       }
     },
     tanggalPenggantian: {
-      type : DataTypes.DATE,
+      type: DataTypes.DATE,
       allowNull: false,
-      validate : {
-        notNull : {
-          msg : "Tanggal Penggantian is required"
+      validate: {
+        notNull: {
+          msg: "Tanggal Penggantian is required"
         },
-        notEmpty : {
-          msg : "HM Penggantian is required"
+        notEmpty: {
+          msg: "HM Penggantian is required"
         }
       }
     },
     quantity: {
-      type : DataTypes.INTEGER,
+      type: DataTypes.INTEGER,
       allowNull: false,
-      validate : {
-        notNull : {
-          msg : "Quantity is required"
+      validate: {
+        notNull: {
+          msg: "Quantity is required"
         },
-        notEmpty : {
-          msg : "Quantity is required"
+        notEmpty: {
+          msg: "Quantity is required"
         }
       }
     },
     lifetime: {
-      type : DataTypes.INTEGER,
+      type: DataTypes.INTEGER,
       allowNull: false,
-      validate : {
-        notNull : {
-          msg : "Lifetime is required"
+      validate: {
+        notNull: {
+          msg: "Lifetime is required"
         },
-        notEmpty : {
-          msg : "Lifetime is required"
+        notEmpty: {
+          msg: "Lifetime is required"
         }
       }
     },
     target: {
-      type : DataTypes.INTEGER,
+      type: DataTypes.INTEGER,
       allowNull: false,
-      validate : {
-        notNull : {
-          msg : "Target is required"
+      validate: {
+        notNull: {
+          msg: "Target is required"
         },
-        notEmpty : {
-          msg : "Target is required"
+        notEmpty: {
+          msg: "Target is required"
         }
       }
     },
     remark: {
-      type : DataTypes.STRING,
+      type: DataTypes.STRING,
       allowNull: false,
-      validate : {
-        notNull : {
-          msg : "Remark is required"
+      validate: {
+        notNull: {
+          msg: "Remark is required"
         },
-        notEmpty : {
-          msg : "Remark is required"
+        notEmpty: {
+          msg: "Remark is required"
         }
       }
     },
-    status: {
-      type : DataTypes.BOOLEAN,
+    pic: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notNull: {
+          msg: "PIC is required"
+        },
+        notEmpty: {
+          msg: "PIC is required"
+        }
+      }
+    },
+    notes: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notNull: {
+          msg: "Notes is required"
+        },
+        notEmpty: {
+          msg: "Notes is required"
+        }
+      }
     },
     userId: {
-      type : DataTypes.INTEGER,
+      type: DataTypes.INTEGER,
       allowNull: false,
-      validate : {
-        notNull : {
-          msg : "userId is required"
+      validate: {
+        notNull: {
+          msg: "userId is required"
         },
-        notEmpty : {
-          msg : "userId is required"
+        notEmpty: {
+          msg: "userId is required"
         }
       }
     }

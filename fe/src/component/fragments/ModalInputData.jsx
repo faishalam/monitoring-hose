@@ -22,7 +22,9 @@ export default function ModalInputData({ openModalInput, setOpenModalInput }) {
             quantity: 0,
             lifetime: 0,
             target: 0,
-            remark: ""
+            remark: "",
+            pic : "",
+            notes: ""
         }
     });
 
@@ -77,10 +79,10 @@ export default function ModalInputData({ openModalInput, setOpenModalInput }) {
                                         { label: "Tanggal Penggantian", name: "tanggalPenggantian", type: "date" },
                                         { label: "HM Penggantian", name: "hmPenggantian", type: "number" },
                                         { label: "Quantity", name: "quantity", type: "number" },
-                                        // { label: "Lifetime", name: "lifetime", type: "number" },
                                         { label: "Target", name: "target", type: "number" },
-                                        // { label: "Email Reminder", name: "email", type: "email" },
-                                        { label: "Remark", name: "remark", type: "select", options: ["Genuine", "IMA"] }
+                                        { label: "Remark", name: "remark", type: "select", options: ["Genuine", "IMA"] },
+                                        { label: "PIC", name: "pic", type: "text" },
+                                        { label: "Notes", name: "notes", type: "text" }
                                     ].map(({ label, name, type, options }) => (
                                         <div key={name} className="flex flex-col">
                                             <label htmlFor={name} className="text-sm font-semibold">{label}</label>

@@ -36,9 +36,11 @@ module.exports = {
       remark: {
         type: Sequelize.STRING
       },
-      status: {
-        type: Sequelize.BOOLEAN,
-        defaultValue: true
+      pic: {
+        type: Sequelize.STRING,
+      },
+      notes : {
+        type: Sequelize.STRING
       },
       userId: {
         type: Sequelize.INTEGER,

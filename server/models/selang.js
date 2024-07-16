@@ -122,8 +122,29 @@ module.exports = (sequelize, DataTypes) => {
         }
       }
     },
-    status: {
-      type : DataTypes.BOOLEAN,
+    pic: {
+      type : DataTypes.STRING,
+      allowNull: false,
+      validate : {
+        notNull : {
+          msg : "PIC is required"
+        },
+        notEmpty : {
+          msg : "PIC is required"
+        }
+      }
+    },
+    notes: {
+      type : DataTypes.STRING,
+      allowNull: false,
+      validate : {
+        notNull : {
+          msg : "Notes is required"
+        },
+        notEmpty : {
+          msg : "Notes is required"
+        }
+      }
     },
     userId: {
       type : DataTypes.INTEGER,
