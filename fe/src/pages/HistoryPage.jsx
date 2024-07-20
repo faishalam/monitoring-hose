@@ -150,6 +150,8 @@ export default function HistoryPage() {
             lifetime: item.lifetime,
             target: item.target,
             remark: item.remark,
+            pic: item.pic,
+            notes: item.notes,
             createdAt: item.createdAt,
             updateAt: item.updateAt
         }
