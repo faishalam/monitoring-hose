@@ -8,4 +8,4 @@ export const heroService = Axios.create({
     headers: {
         Authorization: `Bearer ${localStorage.getItem("access_token")}`
     }
-});
+}); 
