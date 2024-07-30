@@ -31,7 +31,7 @@ class SelangController {
                         { component: { [Op.iLike]: `%${search}%` } },
                         { pn: { [Op.iLike]: `%${search}%` } },
                         { remark: { [Op.iLike]: `%${search}%` } },
-                        { pic : {[Op.iLike]: `%${search}%` } }
+                        { pic: { [Op.iLike]: `%${search}%` } }
                     ]
                 },
                 order: [
@@ -86,7 +86,7 @@ class SelangController {
                         { component: { [Op.iLike]: `%${search}%` } },
                         { pn: { [Op.iLike]: `%${search}%` } },
                         { remark: { [Op.iLike]: `%${search}%` } },
-                        { pic : {[Op.iLike]: `%${search}%` } }
+                        { pic: { [Op.iLike]: `%${search}%` } }
                     ]
                 },
                 order: [
@@ -208,7 +208,7 @@ class SelangController {
                         { component: { [Op.iLike]: `%${search}%` } },
                         { pn: { [Op.iLike]: `%${search}%` } },
                         { remark: { [Op.iLike]: `%${search}%` } },
-                        { pic : {[Op.iLike]: `%${search}%` } }
+                        { pic: { [Op.iLike]: `%${search}%` } }
                     ]
                 },
                 order: [
@@ -233,7 +233,7 @@ class SelangController {
             });
 
             const emails = ['syamsur.rijal@kppmining.com', 'reza.sukendi@kppmining.com', 'willy.fitriana@kppmining.com', 'herisusanto1@kppmining.com', 'nur.sholeh@kppmining.com', 'seeisfleur@gmail.com']
- 
+
             if (response.length === 0) {
                 return res.status(404).json({ message: "No records found for the specified unit" });
             }
@@ -243,7 +243,9 @@ class SelangController {
                 const sumLifetime = lifetime - selang.hmPenggantian
                 const totalLifetime = selang.lifetime + sumLifetime
 
-                await selang.update({ lifetime: totalLifetime });
+                // console.log(sumLifetime, '<<sumlifetime')
+
+                await selang.update({ lifetime: sumLifetime });
                 // jika berhasil update maka : 
                 if (selang.target - selang.lifetime <= 250 || selang.target - selang.lifetime <= 500) {
                     sendEmail(emails, selang);
