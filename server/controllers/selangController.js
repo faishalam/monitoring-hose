@@ -233,7 +233,7 @@ class SelangController {
             });
 
             const emails = ['syamsur.rijal@kppmining.com', 'reza.sukendi@kppmining.com', 'willy.fitriana@kppmining.com', 'herisusanto1@kppmining.com', 'nur.sholeh@kppmining.com', 'seeisfleur@gmail.com']
-
+ 
             if (response.length === 0) {
                 return res.status(404).json({ message: "No records found for the specified unit" });
             }

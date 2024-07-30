@@ -1,7 +1,7 @@
 import Axios from "axios";
 
-// const baseUrl = 'http://localhost:4000/';
-const baseUrl = 'https://javashal.tech';
+const baseUrl = 'http://localhost:4000/';
+// const baseUrl = 'https://javashal.tech';
 
 export const heroService = Axios.create({
     baseURL: baseUrl,
